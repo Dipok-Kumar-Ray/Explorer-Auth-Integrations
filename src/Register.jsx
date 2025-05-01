@@ -1,5 +1,7 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
 import { Link } from 'react-router';
+import { auth } from './integration.init';
 
 const Register = () => {
     const handleRegister = e =>{
@@ -8,12 +10,22 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(name, email, password);
+
+        //create user
+
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(result =>{
+            console.log(result);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
     }
     return (
         <div className=" mx-auto card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div className="card-body">
           <h1 className="text-5xl font-bold">Register now!</h1>
-          <form className="fieldset">
+          <form onSubmit={handleRegister} className="fieldset">
             <label className="label">Name : </label>
             <input
               type="text"
@@ -25,7 +37,7 @@ const Register = () => {
             <input
               type="email"
               className="input"
-            //   name="email"
+              name="email"
               placeholder="Enter Your Email"
             />
             <label className="label">Password</label>
@@ -38,7 +50,7 @@ const Register = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button onClick={handleRegister} className="btn btn-neutral mt-4">
+            <button type='Submit' className="btn btn-neutral mt-4">
               Login
             </button>
           </form>

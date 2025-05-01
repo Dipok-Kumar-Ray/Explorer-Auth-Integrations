@@ -6,12 +6,13 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    console.log(email, password);
   };
   return (
     <div className=" mx-auto card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
         <h1 className="text-5xl font-bold">Login now!</h1>
-        <form className="fieldset">
+        <form onSubmit={handleLogin} className="fieldset">
           <label className="label">Email</label>
           <input
             type="email"
@@ -29,7 +30,7 @@ const Login = () => {
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button onClick={handleLogin} className="btn btn-neutral mt-4">
+          <button type="Submit" className="btn btn-neutral mt-4">
             Login
           </button>
         </form>
