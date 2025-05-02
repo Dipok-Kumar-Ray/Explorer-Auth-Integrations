@@ -1,11 +1,12 @@
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, {useContext} from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from './Contexts/AuthContext';
 
 const Register = () => {
 
     const {createUser} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     // const userInfo = use(AuthContext);
     // console.log(userInfo);
@@ -30,6 +31,7 @@ const Register = () => {
         createUser(email, password)
         .then(result=>{
             console.log(result.user);
+            navigate('/')
         })
         .catch(error=>{
             console.log(error.message);
