@@ -1,3 +1,11 @@
+import { createContext } from "react";
+
+export const AuthContext = createContext(null);
+
+
+
+
+
 // import { createContext} from 'react';
 // import { createUserWithEmailAndPassword } from 'firebase/auth';
 // import { auth } from '../integration.init';
@@ -27,7 +35,3 @@
 // import { createContext } from "react";
 
 // export const AuthContext = createContext(null)
-
-import { createContext } from "react";
-
-export const AuthContext = createContext(null);
